@@ -11,3 +11,4 @@ El objetivo del proyecto es aplicar conocimientos teoricos adquiridos sobre Data
 - Backpropagation
 - Descenso del gradiente
 - Funcion de coste
+- Optimización L-BFGS-B
