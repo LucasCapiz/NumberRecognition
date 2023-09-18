@@ -1,6 +1,6 @@
 import numpy as np
 
-def neural_network(nn_params, input_layer_size, hidden_layer_size, n_labels, X, Y, lamba_value):
+def neural_network(nn_params, input_layer_size, hidden_layer_size, n_labels, X, Y, lambda_value):
 
     # Theta1 [100 x 785] --> hidden_layer_size, input_layer_size + 1
     # Theta2 [10  x 101] --> n_labels, hidden_layer_size + 1
@@ -30,9 +30,8 @@ def neural_network(nn_params, input_layer_size, hidden_layer_size, n_labels, X, 
 
 
     # Funcion de coste
-    cost_value = (1 / samples) * (np.sum(np.sum(-identity_matrix * np.log(aux_matrix3) - (1 - identity_matrix) * np.log(1 - aux_matrix3)))) + (lamba_value / (2 * samples) )
-    sum(sum(pow(Theta1[:,1:], 2))) + sum(sum(pow(Theta2[:,1:], 2)))
-
+    cost_value = (1 / samples) * (np.sum(np.sum(-identity_matrix * np.log(aux_matrix3) - (1 - identity_matrix) * np.log(1 - aux_matrix3)))) + (lambda_value / (2 * samples)) * (np.sum(np.sum(np.square(Theta1[:, 1:]))) + np.sum(np.sum(np.square(Theta2[:, 1:]))))
+    
 
     # Backpropagation
     Error_output_layer = aux_matrix3 - identity_matrix
@@ -41,11 +40,12 @@ def neural_network(nn_params, input_layer_size, hidden_layer_size, n_labels, X, 
 
     
     # Gradiente
-    Theta1[:,0] = 0 # Eliminamos los sesgos, es decir la primer columna de todas las filas
-    Theta1_grad = (1 / samples) * np.dot(Error_hidden_layer.transpose(), aux_matrix) + (lamba_value / samples) * Theta1
 
-    Theta2[:,0] = 0 # Eliminamos los sesgos, es decir la primer columna de todas las filas
-    Theta2_grad = (1 / samples) * np.dot(Error_output_layer.transpose(), aux_matrix2) + (lamba_value / samples) * Theta2
+    Theta1[:, 0] = 0  # Eliminamos los sesgos, es decir, la primer columna de todas las filas
+    Theta1_grad = (1 / samples) * np.dot(Error_hidden_layer.transpose(), aux_matrix) + (lambda_value / samples) * Theta1
+
+    Theta2[:, 0] = 0  # Eliminamos los sesgos, es decir, la primer columna de todas las filas
+    Theta2_grad = (1 / samples) * np.dot(Error_output_layer.transpose(), aux_matrix2) + (lambda_value / samples) * Theta2
     grad = np.concatenate((Theta1_grad.flatten(), Theta2_grad.flatten()))
-    
+
     return cost_value, grad
