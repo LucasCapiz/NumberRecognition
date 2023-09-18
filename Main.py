@@ -17,12 +17,12 @@ Y = dataSet['label']
 Y = Y.flatten() # Flaten convierte una matriz en un vector unidimensional. Lo "aplana"
 
 # Datos de entranamiento
-X_train = X[:60000, :]
-Y_train = Y[:60000]
+X_train = X[:69000, :]
+Y_train = Y[:69000]
 
 # Datos de prueba
-X_test = X[60000:, :]
-Y_test = Y[60000:]
+X_test = X[69000:, :]
+Y_test = Y[69000:]
 
 # Cantidad de datos de entrenamientos (Filas)
 samples = X.shape[0]
