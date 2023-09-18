@@ -30,7 +30,7 @@ samples = X.shape[0]
 
 # Definimos los parametros de la red neuronal
 input_layer_size = 784 # Corresponden a cada pixel de las imagenes de 28x28 = 784
-hidden_layer_size = 100
+hidden_layer_size = 150
 n_labels = 10
 
 
@@ -41,9 +41,9 @@ initial_Theta2 = initialize(n_labels, hidden_layer_size)
 
 # Inicializamos los parametros de la red neuronal
 initial_nn_params = np.concatenate((initial_Theta1.flatten(), initial_Theta2.flatten()))
-n_iterations = 100
-lamba_value = 0.1 # Sobreajuste
-myargs = (input_layer_size, hidden_layer_size, n_labels, X_train, Y_train, lamba_value)
+n_iterations = 150
+lambda_value = 0.1 # Sobreajuste
+myargs = (input_layer_size, hidden_layer_size, n_labels, X_train, Y_train, lambda_value)
 
 
 # Utilizamos la red neuronal
