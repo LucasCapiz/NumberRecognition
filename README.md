@@ -14,4 +14,5 @@ El objetivo del proyecto es aplicar conocimientos teoricos adquiridos sobre Data
 - Optimización L-BFGS-B
 
 # Ejemplo de uso
-                                                              ![image](https://github.com/LucasCapiz/NumberRecognition/assets/103195322/07b35e7e-5d06-4459-b0cd-dbadac070a2f)
+
+![image](https://github.com/LucasCapiz/NumberRecognition/assets/103195322/07b35e7e-5d06-4459-b0cd-dbadac070a2f)
